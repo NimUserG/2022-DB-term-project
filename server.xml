@@ -140,7 +140,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="MyHomework" path="/Homework" reloadable="true" source="org.eclipse.jst.jee.server:MyHomework"/><Context docBase="MyServlet" path="/MyServlet" reloadable="true" source="org.eclipse.jst.jee.server:MyServlet"/><Context docBase="MyFirstWeb" path="/Test" reloadable="true" source="org.eclipse.jst.jee.server:MyFirstWeb"/><Context docBase="MyServlet2" path="/MyServlet2" reloadable="true" source="org.eclipse.jst.jee.server:MyServlet2"/><Context docBase="TermProjectDemo" path="/TermProjectDemo" reloadable="true" source="org.eclipse.jst.jee.server:TermProjectDemo"/><Context docBase="TermProject" path="/TermProject" reloadable="true" source="org.eclipse.jst.jee.server:TermProject"/></Host>
+      <Context docBase="MyHomework" path="/Homework" reloadable="true" source="org.eclipse.jst.jee.server:MyHomework"/><Context docBase="MyServlet" path="/MyServlet" reloadable="true" source="org.eclipse.jst.jee.server:MyServlet"/><Context docBase="MyFirstWeb" path="/Test" reloadable="true" source="org.eclipse.jst.jee.server:MyFirstWeb"/><Context docBase="MyServlet2" path="/MyServlet2" reloadable="true" source="org.eclipse.jst.jee.server:MyServlet2"/><Context docBase="TermProjectDemo" path="/TermProjectDemo" reloadable="true" source="org.eclipse.jst.jee.server:TermProjectDemo"/><Context docBase="DBTermProject" path="/DBTermProject" reloadable="true" source="org.eclipse.jst.jee.server:DBTermProject"/></Host>
     </Engine>
   </Service>
 </Server>
