@@ -19,6 +19,7 @@
 
 		<!-- Main -->
 		<div id="sub_main" class="sub main">
+		<h3>고객 정보</h3>
 			<!-- 검색 상자 -->
 			<section id="search" class="alt">
 				<!--<form method="post" action="sub/customers.jsp">-->
