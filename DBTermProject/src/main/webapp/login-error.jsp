@@ -3,13 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>logout</title>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
 </head>
-<body>
+<body>\
 <%
-session.invalidate();
-response.sendRedirect("index.jsp");
+response.sendRedirect("index.jsp?r=Login failed");
 %>
 </body>
 </html>

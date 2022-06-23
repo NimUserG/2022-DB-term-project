@@ -100,13 +100,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+label {
+   color:red;
+   margin-bottom:2em;
+}
     </style>
    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
+<% String r = request.getParameter("r"); 
+   r = (r==null?"":r);%>
 <div id="login_main" class="login login-page main">
   <div class="form">
      <FORM id="frm" METHOD="POST" class="login-form">
+        <label><%=r%></label>
        <input type="text" id="id" class="input" name="j_username" placeholder="Id" />
       <input type="password" id="pwd" class="input" name="j_password" placeholder="Password" />
       <button type="button" id="send" class="submit-btn">Log in</button>
@@ -236,7 +243,7 @@ body {
             $("#pwd").val(SHA256(sha_pwd));
             $("#frm").attr("action", "j_security_check");
             $("#frm").submit();
-        })
+        });
     });
     </script>
 </body>
