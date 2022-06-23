@@ -31,7 +31,7 @@
 								<option ${(param.searchCondition == "country_name")? "selected" : ""} value="country_name">국가 이름</option>
 							</select>
 						<td><input type="text" id="searchKeyword" name="searchKeyword" value="${param.searchKeyword}"/></td>
-						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/orders.jsp')"></td>					</table>
+						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/inventories.jsp')"></td>					</table>
 						</tr>
 					</table>
 				<!-- </form> -->
@@ -72,6 +72,7 @@
 					while (rs.next()) {
 						int prdId = rs.getInt("product_id");
 						String prdName = rs.getString("product_name");
+						int wahId = rs.getInt("warehouse_id");
 						String wahName = rs.getString("warehouse_name");
 						int quantity = rs.getInt("quantity");
 						String rgnName = rs.getString("region_name");
@@ -81,7 +82,7 @@
 						String city = rs.getString("city");
 						String state = rs.getString("state");
 				%>
-				<tr>
+				<tr id="sub/inventoryDetail.jsp?product_id=<%=prdId%>&warehouse_id=<%=wahId%>" class="btn-modal" >
 					<td><%=prdId%>
 					<td><%=prdName%>
 					<td><%=wahName%>
@@ -112,6 +113,18 @@
 			</table>
 		</div>
 	</div>
-
+	<div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2></h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">   
+            </div>
+        </div>
+    </div>
+			<!-- Scripts -->            
+			<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+			<script src="assets/js/modal.js"></script>
 </body>
 </html>

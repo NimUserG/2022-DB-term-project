@@ -11,6 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/modal.css" />
 </head>
 <body class="is-preload">
 
@@ -31,7 +32,7 @@
 							</select>
 						</td>
 						<td><input type="text" id="searchKeyword" name="searchKeyword" value="${param.searchKeyword}"/></td>
-						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/orders.jsp')"></td>					</table>
+						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/employees.jsp')"></td>					</table>
 						</tr>
 					</table>
 				<!-- </form> -->
@@ -81,7 +82,7 @@
 						int manId = rs.getInt("manager_id");
 						String jobTitle = rs.getString("job_title");
 				%>
-				<tr>
+				<tr id="sub/employeeDetail.jsp?employee_id=<%=empId%>" class="btn-modal" >
 					<td><%=empId%></td>
 					<td><%=firstName%></td>
 					<td><%=lastName%></td>
@@ -110,6 +111,18 @@
 			</table>
 		</div>
 	</div>
-
+	<div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2></h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">   
+            </div>
+        </div>
+    </div>
+			<!-- Scripts -->            
+			<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+			<script src="assets/js/modal.js"></script>
 </body>
 </html>

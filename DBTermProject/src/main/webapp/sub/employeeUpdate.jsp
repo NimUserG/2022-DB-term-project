@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>직원 수정</title>
+<title>관리 직원 수정</title>
 </head>
 <body>
 <%
@@ -32,6 +32,7 @@ int rowCount = pst.executeUpdate();
 
 pst.close();
 conn.close();
+response.sendRedirect("../index.jsp");
 %>
 업데이트 되었습니다.
 

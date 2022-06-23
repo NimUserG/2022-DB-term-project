@@ -8,9 +8,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-
+<div id="login_main" class="login main">
 <!-- <FORM  id="frm" ACTION="j_security_check" METHOD="POST"> -->
-<FORM id="frm" METHOD="POST">
+<FORM id="frm" METHOD="POST" class="panel_item">
 아이디 :
 <INPUT TYPE="TEXT" id="id" NAME="j_username" />
 암호 :
@@ -145,6 +145,7 @@
     });
     </script>
 </FORM>
-
+</div>
+</div>
 </body>
 </html>

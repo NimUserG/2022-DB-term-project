@@ -31,14 +31,15 @@ pst.setInt(5, Integer.parseInt(cusUp));
 pst.executeUpdate();
 pst = conn.prepareStatement("update customers set name=?, address=?, website=?, credit_limit=? where customer_id=?");
 pst.setString(1, name);
-pst.setString(2, email);
-pst.setString(3, phone);
+pst.setString(2, address);
+pst.setString(3, website);
 pst.setInt(4, Integer.parseInt(creditLimit));
 pst.setInt(5, Integer.parseInt(cusUp));
 int rowCount = pst.executeUpdate();
 
 pst.close();
 conn.close();
+response.sendRedirect("../index.jsp");
 %>
 업데이트 되었습니다.
 

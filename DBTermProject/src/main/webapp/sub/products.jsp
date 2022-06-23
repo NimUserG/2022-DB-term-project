@@ -10,10 +10,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
-
-<script language="javascript">
-  function showPopup(id) { window.open("sub/productDetail.jsp?customer_id="+id, "a", "width=1000, height=500, left=400, top=50"); }
-  </script>
+<link rel="stylesheet" href="assets/css/modal.css" />
 </head>
 <body class="is-preload">
 
@@ -32,7 +29,7 @@
 								<option ${(param.searchCondition == "category_name")? "selected" : ""} value="category_name">품목 이름</option>
 							</select>
 						<td><input type="text" id="searchKeyword" name="searchKeyword" value="${param.searchKeyword}"/></td>
-						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/orders.jsp')"></td>					</table>
+						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/products.jsp')"></td>					</table>
 				<!-- </form> -->
 			</section>
 
@@ -74,7 +71,7 @@
 						int catId = rs.getInt("category_id");
 						String catName = rs.getString("category_name");
 				%>
-				<tr>
+				<tr id="sub/productDetail.jsp?product_id=<%=prdId%>" class="btn-modal" >
 					<td><%=prdId%>
 					<td><%=prdName%>
 					<td><%=description%>
@@ -102,6 +99,18 @@
 			</table>
 		</div>
 	</div>
-
+	<div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2></h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">   
+            </div>
+        </div>
+    </div>
+			<!-- Scripts -->            
+			<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+			<script src="assets/js/modal.js"></script>
 </body>
 </html>

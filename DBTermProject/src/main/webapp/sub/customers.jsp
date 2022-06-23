@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
@@ -11,10 +11,6 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/modal.css" />
-
-<script language="javascript">
-  function showPopup(id) { window.open("sub/customerDetail.jsp?customer_id="+id, "a", "width=1000, height=500, left=400, top=50"); }
-  </script>
 </head>
 <body class="is-preload">
 
@@ -80,7 +76,7 @@
 						String web = rs.getString("website");
 						int credit = rs.getInt("credit_limit");
 				%>
-				<tr onclick="acyncMovePage('sub/customerDetail.jsp?customer_id=<%=id%>')">
+				<tr id="sub/customerDetail.jsp?customer_id=<%=id%>" class="btn-modal" >
 					<td><%=id%></td>
 					<td><%=name%></td>
 					<td><%=addr%></td>
@@ -106,6 +102,18 @@
 			</table>
 		</div>
 	</div>
-
+	<div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2></h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">   
+            </div>
+        </div>
+    </div>
+			<!-- Scripts -->            
+			<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+			<script src="assets/js/modal.js"></script>
 </body>
 </html>

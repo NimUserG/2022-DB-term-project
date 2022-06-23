@@ -5,7 +5,6 @@ function acyncMovePage(url){
         dtatType:"html",
         type:"post",
         success:function(result){
-			console.log("1 success",result);
             $("#main").html(result);
         },error:function(err){console.log("err",err)}
 	})
@@ -18,7 +17,6 @@ function acyncMovePage(url, data){
 		dataType:"html",
 		type:"get",
 		success:function(result){
-			console.log("2 success",result)
 			$("#main").html(result);
 		},error:function(err){console.log("err",err)}
 	})
@@ -30,4 +28,15 @@ function such(url){
 	var data = 'searchCondition='+$("#searchCondition").val()+'&searchKeyword='+$("#searchKeyword").val();
 	console.log("data",data);
 	acyncMovePage(url,data);
+}
+
+function open_modal(url){
+	$.ajax({
+		url:url,
+		dataType:"html",
+		type:"get",
+		success:function(result){
+			$("#modal > .content").html(result);
+		},error:function(err){console.log("err",err)}
+	})
 }
