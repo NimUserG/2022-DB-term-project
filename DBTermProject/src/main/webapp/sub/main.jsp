@@ -9,7 +9,7 @@
 	    <!-- Wrapper -->
 		<div id="wrapper">
 			<!-- Main -->
-			<div id="main">
+			<div id="sub_main" class="sub main">
 				<table>
 					<tr>
 						<td>

@@ -19,11 +19,11 @@
 	<div id="wrapper">
 
 		<!-- Main -->
-		<div id="main">
+		<div id="sub_main" class="sub main">
 
 			<!-- 검색 상자 -->
 			<section id="search" class="alt">
-				<form method="post" action="sub/orders.jsp">
+				<!--<form method="post" action="sub/orders.jsp">-->
 					<table>
 						<tr>
 						<td><select id="searchCondition" name="searchCondition">
@@ -31,24 +31,24 @@
 								<option ${(param.searchCondition == "name")? "selected" : ""} value="name">고객 이름</option>
 							</select>
 						<td><input type="text" id="searchKeyword" name="searchKeyword" value="${param.searchKeyword}"/></td>
-						<td><input type="submit" id="searchButton" value="검색 "> <!-- main.css:1893 수정 --></td>
+						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/orders.jsp')"></td>
 						</tr>
 					</table>
-				</form>
+				<!-- </form> -->
 			</section>
 
 			<!-- 테이블로 출력 -->
 			<table id="printTable">
 				<tr>
-					<th>고객 아이디
-					<th>고객 이름
-					<th>상태
-					<th>판매원 아이디
-					<th>주문 날짜
-					<th>제품 이름
-					<th>설명
-					<th>수량
-					<th>단가
+					<th>고객 아이디</th>
+					<th>고객 이름</th>
+					<th>상태</th>
+					<th>판매원 아이디</th>
+					<th>주문 날짜</th>
+					<th>제품 이름</th>
+					<th>설명</th>
+					<th>수량</th>
+					<th>단가</th>
 				</tr>
 
 				<%
@@ -60,7 +60,7 @@
 				PreparedStatement pst = null;
 				ResultSet rs = null;
 				try {
-					if (sc == null & sk == null) {
+					if (sc == null || sk == null || sc == "" || sk == "") {
 						pst = conn.prepareStatement("select * from customers natural join orders natural join order_items natural join products order by customer_id");
 					} else if (sc.equals("customer_id")) {
 						pst = conn.prepareStatement("select * from customers natural join orders natural join order_items natural join products where " + sc + "=? order by customer_id");
@@ -112,13 +112,6 @@
 			</table>
 		</div>
 	</div>
-	<!-- Scripts -->
-	<script src="assets/js/library/browser-1.0.1.min.js"></script>
-	<script src="assets/js/library/jquery-3.6.0.min.js"></script>
-	<script src="assets/js/library/breakpoints-1.0.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/modal.js"></script>
 
 </body>
 </html>

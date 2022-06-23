@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
@@ -11,6 +11,10 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/modal.css" />
+
+<script language="javascript">
+  function showPopup(id) { window.open("sub/customerDetail.jsp?customer_id="+id, "a", "width=1000, height=500, left=400, top=50"); }
+  </script>
 </head>
 <body class="is-preload">
 
@@ -18,10 +22,10 @@
 	<div id="wrapper">
 
 		<!-- Main -->
-		<div id="main">
+		<div id="sub_main" class="sub main">
 			<!-- 검색 상자 -->
 			<section id="search" class="alt">
-				<form method="post" action="sub/customers.jsp">
+				<!--<form method="post" action="sub/customers.jsp">-->
 					<table>
 						<tr>
 						<td><select id="searchCondition" name="searchCondition">
@@ -32,20 +36,20 @@
 								<option ${(param.searchCondition == "credit_limit")? "selected" : ""} value="credit_limit">신용 한도</option>
 							</select>
 						<td><input type="text" id="searchKeyword" name="searchKeyword" value="${param.searchKeyword}"/></td>
-						<td><input type="submit" id="searchButton" value="검색 "> <!-- main.css:1893 수정 --></td>
+						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/customers.jsp')"></td>
 						</tr>
 					</table>
-				</form>
+				<!-- </form> -->
 			</section>
 
 			<!-- 테이블로 출력 -->
 			<table id="printTable">
 				<tr>
-					<th>고객 아이디
-					<th>이름
-					<th>주소
-					<th>웹사이트
-					<th>신용 한도
+					<th>고객 아이디</th>
+					<th>이름</th>
+					<th>주소</th>
+					<th>웹사이트</th>
+					<th>신용 한도</th>
 				</tr>
 
 				<%
@@ -57,7 +61,7 @@
 				PreparedStatement pst = null;
 				ResultSet rs = null;
 				try {
-					if (sc == null & sk == null) {
+					if (sc == null || sk == null || sc == "" || sk == "") {
 						pst = conn.prepareStatement("select * from customers order by customer_id");
 					}
 					else if (sc.equals("customer_id") || sc.equals("credit_limit")) {
@@ -76,8 +80,8 @@
 						String web = rs.getString("website");
 						int credit = rs.getInt("credit_limit");
 				%>
-				<tr>
-					<td><a onclick="" href="sub/customerDetail.jsp?customer_id=<%=id %>"><%=id%></a></td>
+				<tr onclick="acyncMovePage('sub/customerDetail.jsp?customer_id=<%=id%>')">
+					<td><%=id%></td>
 					<td><%=name%></td>
 					<td><%=addr%></td>
 					<td><%=web%></td>
@@ -102,13 +106,6 @@
 			</table>
 		</div>
 	</div>
-	<!-- Scripts -->
-	<script src="assets/js/library/browser-1.0.1.min.js"></script>
-	<script src="assets/js/library/jquery-3.6.0.min.js"></script>
-	<script src="assets/js/library/breakpoints-1.0.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/modal.js"></script>
 
 </body>
 </html>

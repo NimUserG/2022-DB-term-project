@@ -18,10 +18,10 @@
 	<div id="wrapper">
 
 		<!-- Main -->
-		<div id="main">
+		<div id="sub_main" class="sub main">
 			<!-- 검색 상자 -->
 			<section id="search" class="alt">
-				<form method="post" action="employees.jsp">
+				<!-- <form method="post" action="employees.jsp"> -->
 					<table>
 						<tr>
 						<td><select id="searchCondition" name="searchCondition">
@@ -31,23 +31,23 @@
 							</select>
 						</td>
 						<td><input type="text" id="searchKeyword" name="searchKeyword" value="${param.searchKeyword}"/></td>
-						<td><input type="submit" id="searchButton" value="검색 "> <!-- main.css:1893 수정 --></td>
+						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/orders.jsp')"></td>					</table>
 						</tr>
 					</table>
-				</form>
+				<!-- </form> -->
 			</section>
 
 			<!-- 테이블로 출력 -->
 			<table id="printTable">
 				<tr>
-					<th>직원 아이디
-					<th>이름
-					<th>성
-					<th>이메일
-					<th>전화 번호
-					<th>고용 날짜
-					<th>관리자 아이디
-					<th>직위
+					<th>직원 아이디</th>
+					<th>이름</th>
+					<th>성</th>
+					<th>이메일</th>
+					<th>전화 번호</th>
+					<th>고용 날짜</th>
+					<th>관리자 아이디</th>
+					<th>직위</th>
 				</tr>
 
 				<%
@@ -59,7 +59,7 @@
 				PreparedStatement pst = null;
 				ResultSet rs = null;
 				try {
-					if (sc == null & sk == null) {
+					if (sc == null || sk == null || sc == "" || sk == "") {
 						pst = conn.prepareStatement("select * from employees order by employee_id");
 					}
 					else if (sc.equals("employee_id") || sc.equals("manager_id")) {
@@ -82,14 +82,14 @@
 						String jobTitle = rs.getString("job_title");
 				%>
 				<tr>
-					<td><%=empId%>
-					<td><%=firstName%>
-					<td><%=lastName%>
-					<td><%=email%>
-					<td><%=phone%>
-					<td><%=hireDate%>
-					<td><%=manId%>
-					<td><%=jobTitle%>
+					<td><%=empId%></td>
+					<td><%=firstName%></td>
+					<td><%=lastName%></td>
+					<td><%=email%></td>
+					<td><%=phone%></td>
+					<td><%=hireDate%></td>
+					<td><%=manId%></td>
+					<td><%=jobTitle%></td>
 				</tr>
 				<%
 					}
@@ -110,13 +110,6 @@
 			</table>
 		</div>
 	</div>
-	<!-- Scripts -->
-	<script src="assets/js/library/browser-1.0.1.min.js"></script>
-	<script src="assets/js/library/jquery-3.6.0.min.js"></script>
-	<script src="assets/js/library/breakpoints-1.0.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/modal.js"></script>
 
 </body>
 </html>

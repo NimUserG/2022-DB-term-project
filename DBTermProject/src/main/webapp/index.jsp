@@ -1,21 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
-<% session.setAttribute("uRole", "매니저");
-	session.setAttribute("uName", "최나경");
-   //session.removeAttribute("uName");
-	String s_uRole = (String)session.getAttribute("uRole");
-	String s_uName = (String)session.getAttribute("uName"); 
-	Boolean login_ck = false; 
-	if (s_uName==null){
-		s_uRole = "";
-		s_uName = "";
-		login_ck = false;
-	}else{
-		login_ck = true;
+<%
+	String uName = "";
+	String uRole = "";
+	if (request.isUserInRole("Manager")) {
+		uRole = "매니저";
+	} else {
+		uRole = "일반사원";
 	}
 %>
-	
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -27,6 +21,7 @@
         <link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
+		
 		<!-- Logo -->
 			<div id="logo">
 				<strong>[관리자용]</strong>
@@ -37,7 +32,7 @@
 			<div id="wrapper">
 
 				<!-- Main -->
-					<div id="main">
+					<div id="main" class="main">
                         
 					</div>
 
@@ -47,30 +42,20 @@
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
-										<a onclick="acyncMovePage('main.jsp')">
-										<h1><%= s_uName %></h1>
-										<i class="fas fa-user-alt fa-1x"></i><strong><%= s_uRole %></strong>
+										<a onclick="acyncMovePage('s.jsp')">
+										<h1><%= uName %></h1>
+										<i class="fas fa-user-alt fa-1x"></i><strong><%= uRole %></strong>
 										</a>
 									</header>
-									<ul id="nav"> <!-- data 분리 --> </ul>
-									<ul id="sub">
-										<%
-											if(login_ck == false){
-										%>		
-												<li><a onclick="acyncMovePage('login.jsp')">
-													<i class="fas fa-sign-in-alt fa-2x"></i>
-													login
-												</a></li>
-										<%
-											} else {
-										%>	
-												<li><a onclick="acyncMovePage('logout.jsp')">
-													<i class="fas fa-sign-out-alt fa-2x"></i>
-													logout
-												</a></li>
-										<%		
-											}
-										%>
+									<ul id="stanaerd_nav"> <!-- data 분리 --> </ul>
+									<% if(uRole=="Manager"){ %>
+                           			<ul id="manager_nav" class="ul_topline"> <!-- data 분리 --> </ul>
+                        			<% } %>
+									<ul id="sub">	
+										<li><a href='logout.jsp'>
+											<i class="fas fa-sign-out-alt fa-2x"></i>
+											logout
+										</a></li>
 									</ul>
 								</nav>
 						</div>
@@ -84,5 +69,6 @@
 			<script src="assets/js/util.js"></script>
             <script src="assets/js/main.js"></script>
             <script src="assets/js/menu.js"></script>
+            <script src="assets/js/ajax.js"></script>
 	</body>
 </html>

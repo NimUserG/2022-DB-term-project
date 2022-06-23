@@ -18,10 +18,10 @@
 	<div id="wrapper">
 
 		<!-- Main -->
-		<div id="main">
+		<div id="sub_main" class="sub main">
 			<!-- 검색 상자 -->
 			<section id="search" class="alt">
-				<form method="post" action="sub/inventories.jsp">
+				<!-- <form method="post" action="sub/inventories.jsp"> -->
 					<table>
 						<tr>
 						<td><select id="searchCondition" name="searchCondition">
@@ -31,25 +31,25 @@
 								<option ${(param.searchCondition == "country_name")? "selected" : ""} value="country_name">국가 이름</option>
 							</select>
 						<td><input type="text" id="searchKeyword" name="searchKeyword" value="${param.searchKeyword}"/></td>
-						<td><input type="submit" id="searchButton" value="검색 "> <!-- main.css:1893 수정 --></td>
+						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/orders.jsp')"></td>					</table>
 						</tr>
 					</table>
-				</form>
+				<!-- </form> -->
 			</section>
 
 			<!-- 테이블로 출력 -->
 			<table id="printTable">
 				<tr>
-					<th>제품 아이디
-					<th>제품 이름
-					<th>창고 이름
-					<th>수량
-					<th>지역 이름
-					<th>국가 이름
-					<th>주소
-					<th>우편 번호
-					<th>시
-					<th>주
+					<th>제품 아이디</th>
+					<th>제품 이름</th>
+					<th>창고 이름</th>
+					<th>수량</th>
+					<th>지역 이름</th>
+					<th>국가 이름</th>
+					<th>주소</th>
+					<th>우편 번호</th>
+					<th>시</th>
+					<th>주</th>
 				</tr>
 
 				<%
@@ -61,7 +61,7 @@
 				PreparedStatement pst = null;
 				ResultSet rs = null;
 				try {
-					if (sc == null & sk == null) {
+					if (sc == null || sk == null || sc == "" || sk == "") {
 						pst = conn.prepareStatement("select * from products natural join inventories natural join warehouses natural join locations natural join countries natural join regions order by product_id");
 					} else {
 						pst = conn.prepareStatement("select * from products natural join inventories natural join warehouses natural join locations natural join countries natural join regions where " + sc + " like ? order by product_id");
@@ -112,13 +112,6 @@
 			</table>
 		</div>
 	</div>
-
-	<!-- Scripts -->
-	<script src="assets/js/library/browser-1.0.1.min.js"></script>
-	<script src="assets/js/library/jquery-3.6.0.min.js"></script>
-	<script src="assets/js/library/breakpoints-1.0.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
 
 </body>
 </html>

@@ -10,6 +10,10 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
+
+<script language="javascript">
+  function showPopup(id) { window.open("sub/productDetail.jsp?customer_id="+id, "a", "width=1000, height=500, left=400, top=50"); }
+  </script>
 </head>
 <body class="is-preload">
 
@@ -17,10 +21,10 @@
 	<div id="wrapper">
 
 		<!-- Main -->
-		<div id="main">
+		<div id="sub_main" class="sub main">
 			<!-- 검색 상자 -->
 			<section id="search" class="alt">
-				<form method="post" action="sub/products.jsp">
+				<!-- <form method="post" action="sub/products.jsp"> -->
 					<table>
 						<tr>
 						<td><select id="searchCondition" name="searchCondition">
@@ -28,21 +32,20 @@
 								<option ${(param.searchCondition == "category_name")? "selected" : ""} value="category_name">품목 이름</option>
 							</select>
 						<td><input type="text" id="searchKeyword" name="searchKeyword" value="${param.searchKeyword}"/></td>
-						<td><input type="submit" id="searchButton" value="검색 "> <!-- main.css:1893 수정 --></td>
-					</table>
-				</form>
+						<td><input type="button" id="searchButton" value="검색" onclick="such('sub/orders.jsp')"></td>					</table>
+				<!-- </form> -->
 			</section>
 
 			<!-- 테이블로 출력 -->
 			<table id="printTable">
 				<tr>
-					<th>제품 아이디
-					<th>제품 이름
-					<th>설명
-					<th>표준 원가
-					<th>정가
-					<th>품목 아이디
-					<th>품목 이름
+					<th>제품 아이디</th>
+					<th>제품 이름</th>
+					<th>설명</th>
+					<th>표준 원가</th>
+					<th>정가</th>
+					<th>품목 아이디</th>
+					<th>품목 이름</th>
 				</tr>
 
 				<%
@@ -54,7 +57,7 @@
 				PreparedStatement pst = null;
 				ResultSet rs = null;
 				try {
-					if (sc == null & sk == null) {
+					if (sc == null || sk == null || sc == "" || sk == "") {
 						pst = conn.prepareStatement("select * from products natural join product_categories order by product_id");
 					} else {
 						pst = conn.prepareStatement("select * from products natural join product_categories where " + sc + " like ? order by product_id");
@@ -93,18 +96,12 @@
 
 				/*rs.close();
 				pst.close();
-				conn.close();*/
+				conn.clos	e();*/
 				%>
 
 			</table>
 		</div>
 	</div>
-	<!-- Scripts -->
-	<script src="assets/js/library/browser-1.0.1.min.js"></script>
-	<script src="assets/js/library/jquery-3.6.0.min.js"></script>
-	<script src="assets/js/library/breakpoints-1.0.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
 
 </body>
 </html>

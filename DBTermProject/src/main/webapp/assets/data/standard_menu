@@ -1,0 +1,11 @@
+<li><a onclick="acyncMovePage('sub/main.jsp')">
+    <i class="fa fa-home fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;
+    Main</a></li>
+<li><a onclick="acyncMovePage('sub/customers.jsp')">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객관리</a></li>
+<li><a onclick="acyncMovePage('sub/orders.jsp')">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;구매내역</a></li>
+<li><a onclick="acyncMovePage('sub/products.jsp')">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제품관리</a></li>
+<li><a onclick="acyncMovePage('sub/inventories.jsp')">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;재고관리</a></li>
