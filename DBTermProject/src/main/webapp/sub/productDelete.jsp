@@ -20,6 +20,7 @@ int rowCount = pst.executeUpdate();
 
 pst.close();
 conn.close();
+response.sendRedirect("../index.jsp");
 %>
 삭제되었습니다.
 

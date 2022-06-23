@@ -22,7 +22,7 @@ pst.setInt(1, Integer.parseInt(quantity));
 pst.setInt(2, Integer.parseInt(prdId));
 pst.setInt(3, Integer.parseInt(wahId));
 int rowCount = pst.executeUpdate();
-	
+
 pst.close();
 conn.close();
 response.sendRedirect("../index.jsp");
