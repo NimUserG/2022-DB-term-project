@@ -1,23 +1,118 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>로그인</title>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<title>濡쒓렇�씤</title>
+    <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #2E2E2E;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #7f888f;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #2E2E2E;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #2E2E2E;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+    </style>
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-<div id="login_main" class="login main">
-<!-- <FORM  id="frm" ACTION="j_security_check" METHOD="POST"> -->
-<FORM id="frm" METHOD="POST" class="panel_item">
-아이디 :
-<INPUT TYPE="TEXT" id="id" NAME="j_username" />
-암호 :
-<INPUT TYPE="PASSWORD" id="pwd" NAME="j_password" />
-<section id="encryptedData"></section>
-<!-- <INPUT TYPE="PASSWORD" id="encryptedData" NAME="j_password" /> -->
-<INPUT TYPE="button" id="send" value="로그인"/>
+<div id="login_main" class="login login-page main">
+  <div class="form">
+     <FORM id="frm" METHOD="POST" class="login-form">
+       <input type="text" id="id" class="input" name="j_username" placeholder="Id" />
+      <input type="password" id="pwd" class="input" name="j_password" placeholder="Password" />
+      <button type="button" id="send" class="submit-btn">Log in</button>
+    </form>
+  </div>
+</div>
 <script type="text/javascript">
   /**
   *  This pen is just a demo for SHA256.
@@ -144,8 +239,5 @@
         })
     });
     </script>
-</FORM>
-</div>
-</div>
 </body>
 </html>
